@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dynace Global Solutions — Advanced Bio-Tech Nutrition</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --navy: #0B1929;
+    --navy-mid: #122840;
+    --navy-card: #0F2035;
+    --cream: #F5EDD8;
+    --cream-dim: #D6C9A8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+
+  /* ── URGENCY BAR ── */
+  .urgency-bar {
+    background: linear-gradient(90deg, #7B0000, #B00020, #7B0000);
+    background-size: 200% 100%;
+    animation: slideGrad 4s linear infinite;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .urgency-bar .pulse { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #FF4444; margin-right: 8px; animation: pulse 1.2s ease infinite; vertical-align: middle; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
+  @keyframes slideGrad { 0%{background-position:0%} 100%{background-position:200%} }
+
+  /* ── NAVBAR ── */
+  nav {
+    background: rgba(11,25,41,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo-text { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:var(--gold); letter-spacing:0.04em; }
+  .logo-sub { font-size:0.62rem; letter-spacing:0.2em; color:var(--cream-dim); text-transform:uppercase; margin-top:-4px; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 80% at 20% 80%, rgba(0,80,160,0.18) 0%, transparent 60%);
+  }
+  .hero-badge {
+    display:inline-block;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold-light);
+    font-size:0.7rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    padding:6px 18px;
+    border-radius:2px;
+    margin-bottom:22px;
+    backdrop-filter:blur(4px);
+  }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight:500; line-height:1.12; color:var(--cream); margin-bottom:18px; }
+  .hero h1 em { font-style:normal; color:var(--gold-light); }
+  .hero p { max-width:560px; margin:0 auto 36px; font-size:1.05rem; color:var(--cream-dim); line-height:1.7; }
+
+  .btn-primary {
+    display:inline-block;
+    background: linear-gradient(135deg, var(--gold) 0%, #A07820 100%);
+    color: var(--navy);
+    font-weight:600;
+    font-size:0.85rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    padding:14px 36px;
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    transition: all .25s ease;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow: 0 8px 28px rgba(201,168,76,0.35); }
+
+  .btn-wa {
+    display:inline-flex; align-items:center; gap:8px;
+    background: #25D366;
+    color: #fff;
+    font-weight:600;
+    font-size:0.8rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:12px 22px;
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    border-radius:4px;
+    transition: all .2s ease;
+    white-space:nowrap;
+  }
+  .btn-wa:hover { background:#1DAA57; transform:translateY(-1px); box-shadow:0 6px 20px rgba(37,211,102,0.35); }
+  .btn-wa svg { flex-shrink:0; }
+
+  /* ── DIVIDER ── */
+  .gold-divider {
+    display:flex; align-items:center; gap:14px;
+    margin:0 auto 48px;
+    max-width:280px;
+  }
+  .gold-divider::before,.gold-divider::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+  .gold-divider span { color:var(--gold); font-size:1.1rem; }
+
+  /* ── SECTION TITLES ── */
+  .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight:500; color:var(--cream); text-align:center; line-height:1.2; }
+  .section-sub { text-align:center; color:var(--cream-dim); font-size:0.95rem; margin-top:10px; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7; }
+
+  /* ── TRUST STRIP ── */
+  .trust-strip {
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    background: var(--navy-mid);
+    padding: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+  }
+  .trust-item { text-align:center; }
+  .trust-item .num { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:var(--gold); line-height:1; }
+  .trust-item .lbl { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--cream-dim); margin-top:4px; }
+
+  /* ── PRODUCT CARDS ── */
+  .products-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap:24px;
+  }
+  .product-card {
+    background: var(--navy-card);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius:2px;
+    padding:28px 24px;
+    position:relative;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    overflow:hidden;
+  }
+  .product-card::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity:0;
+    transition: opacity .25s ease;
+  }
+  .product-card:hover { transform:translateY(-4px); border-color:rgba(201,168,76,0.4); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+  .product-card:hover::before { opacity:1; }
+
+  .product-icon { font-size:2.2rem; margin-bottom:12px; }
+  .product-badge { display:inline-block; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; border:1px solid var(--gold); color:var(--gold); padding:3px 10px; border-radius:1px; margin-bottom:12px; }
+  .product-name { font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:600; color:var(--cream); margin-bottom:6px; }
+  .product-tagline { font-size:0.88rem; color:var(--gold-light); font-weight:500; margin-bottom:10px; letter-spacing:0.03em; }
+  .product-desc { font-size:0.84rem; color:var(--cream-dim); line-height:1.65; margin-bottom:20px; }
+  .product-features { list-style:none; margin-bottom:22px; display:flex; flex-direction:column; gap:6px; }
+  .product-features li { font-size:0.78rem; color:var(--cream-dim); display:flex; align-items:flex-start; gap:8px; }
+  .product-features li::before { content:'◆'; color:var(--gold); font-size:0.55rem; margin-top:3px; flex-shrink:0; }
+
+  /* ── RECRUITMENT ── */
+  .recruit-section {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, #0a1f35 100%);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius:2px;
+    padding: 56px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .recruit-section::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+  }
+  .recruit-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:20px; margin:36px 0; }
+  .recruit-item { background:rgba(11,25,41,0.6); border:1px solid rgba(201,168,76,0.2); padding:20px; border-radius:2px; }
+  .recruit-item .ri-icon { font-size:1.8rem; margin-bottom:8px; }
+  .recruit-item .ri-title { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--gold-light); margin-bottom:4px; }
+  .recruit-item .ri-desc { font-size:0.76rem; color:var(--cream-dim); line-height:1.5; }
+
+  /* ── LEAD FORM ── */
+  .form-wrap {
+    background: var(--navy-card);
+    border:1px solid rgba(201,168,76,0.2);
+    border-radius:2px;
+    padding:44px 36px;
+    max-width:520px;
+    margin:0 auto;
+  }
+  .form-field { margin-bottom:18px; }
+  .form-field label { display:block; font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--cream-dim); margin-bottom:7px; }
+  .form-field input, .form-field select {
+    width:100%; background:rgba(11,25,41,0.7);
+    border:1px solid rgba(201,168,76,0.25);
+    color:var(--cream);
+    padding:12px 16px;
+    font-family:'Jost',sans-serif;
+    font-size:0.9rem;
+    border-radius:2px;
+    outline:none;
+    transition: border-color .2s;
+  }
+  .form-field input:focus, .form-field select:focus { border-color: var(--gold); }
+  .form-field input::placeholder { color: rgba(214,201,168,0.4); }
+  .form-field select option { background: var(--navy); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #06101A;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 32px 20px;
+    text-align:center;
+    font-size:0.72rem;
+    color: rgba(214,201,168,0.45);
+    line-height:1.8;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  .anim { opacity:0; animation: fadeUp .7s ease forwards; }
+  .anim-d1 { animation-delay:.1s } .anim-d2 { animation-delay:.2s } .anim-d3 { animation-delay:.3s } .anim-d4 { animation-delay:.4s }
+
+  section { padding: 72px 20px; }
+  .container { max-width:1100px; margin:0 auto; }
+
+  @media(max-width:640px) {
+    .hero { min-height:60vh; padding:60px 16px; }
+    .trust-strip { gap:20px; }
+    .recruit-section { padding:36px 20px; }
+    .form-wrap { padding:32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  <span class="pulse"></span>
+  📍 Currently Processing Global Batch — <strong>Limited Slots Remaining This Week.</strong> &nbsp;|&nbsp; Secure Your Order Now Before Allocation Closes.
+</div>
+
+<!-- NAV -->
+<nav>
+  <div>
+    <div class="logo-text">DYNACE</div>
+    <div class="logo-sub">Global Solutions</div>
+  </div>
+  <a href="#order" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div style="position:relative; z-index:1;">
+    <div class="hero-badge anim anim-d1">Advanced Bio-Tech Nutrition · Trusted Globally</div>
+    <h1 class="anim anim-d2">
+      Repair Your Body<br/>
+      <em>at the Cellular Level.</em>
+    </h1>
+    <p class="anim anim-d3">
+      Precision-formulated nutrition science engineered for those who refuse to slow down. 
+      Reclaim vitality, balance, and confidence — at any age.
+    </p>
+    <div class="anim anim-d4" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
+      <a href="#products" class="btn-primary">Explore Products</a>
+      <a href="#join" class="btn-primary" style="background:transparent;color:var(--gold);border:1px solid var(--gold);clip-path:none;border-radius:2px;">Join the Network</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item"><div class="num">50+</div><div class="lbl">Countries Reached</div></div>
+  <div class="trust-item"><div class="num">120K+</div><div class="lbl">Active Members</div></div>
+  <div class="trust-item"><div class="num">8</div><div class="lbl">Premium Formulas</div></div>
+  <div class="trust-item"><div class="num">USD</div><div class="lbl">Global Earnings</div></div>
+  <div class="trust-item"><div class="num">24/7</div><div class="lbl">Support Network</div></div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--navy);">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:52px;">
+      <div class="gold-divider"><span>✦</span></div>
+      <h2 class="section-title">The <em style="font-style:italic;color:var(--gold-light);">Complete</em> Dynace Collection</h2>
+      <p class="section-sub" style="margin-top:14px;">Eight elite-grade formulations, each engineered to target a specific pillar of human vitality. This is not wellness — this is bio-technology.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- 1. ROCENTA -->
+      <div class="product-card">
+        <div class="product-icon">🔬</div>
+        <div class="product-badge">Master Formula</div>
+        <div class="product-name">Rocenta</div>
+        <div class="product-tagline">Master Repair & Anti-Aging</div>
+        <div class="product-desc">A flagship cellular regeneration complex designed to support the body's natural repair mechanisms, reduce oxidative stress, and promote a more youthful biological age.</div>
+        <ul class="product-features">
+          <li>Supports cellular renewal & DNA protection</li>
+          <li>Potent antioxidant complex</li>
+          <li>Promotes skin elasticity & tissue repair</li>
+          <li>Formulated for adults 40+</li>
+        </ul>
+        <a href="https://wa.me/?text=Hi%2C%20I%27d%20like%20to%20order%20Rocenta%20(Master%20Repair%20%26%20Anti-Aging)%20from%20Dynace%20Global." class="btn-wa" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.93 0-3.73-.52-5.27-1.426l-.378-.223-3.903.93.974-3.8-.246-.39A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+
+      <!-- 2. INSUENZ -->
+      <div class="product-card">
+        <div class="product-icon">🌿</div>
+        <div class="product-badge">Metabolic Support</div>
+        <div class="product-name">Insuenz</div>
+        <div class="product-tagline">Natural Blood Sugar Balance</div>
+        <div class="product-desc">A scientifically-formulated herbal blend to support healthy glucose metabolism, promote insulin sensitivity, and maintain stable energy levels throughout the day.*</div>
+        <ul class="product-features">
+          <li>Supports healthy blood sugar levels*</li>
+          <li>Promotes balanced energy & reduced cravings</li>
+          <li>Rich in chromium, bitter melon & cinnamon extract</li>
+          <li>Natural & plant-based ingredients</li>
+        </ul>
+        <a href="https://wa.me/?text=Hi%2C%20I%27d%20like%20to%20order%20Insuenz%20(Blood%20Sugar%20Balance)%20from%20Dynace%20Global." class="btn-wa" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.93 0-3.73-.52-5.27-1.426l-.378-.223-3.903.93.974-3.8-.246-.39A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+
+      <!-- 3. LYFTMAX -->
+      <div class="product-card">
+        <div class="product-icon">🌸</div>
+        <div class="product-badge">Women's Wellness</div>
+        <div class="product-name">Lyftmax</div>
+        <div class="product-tagline">Women's Confidence & Hormone Balance</div>
+        <div class="product-desc">An advanced women's formula supporting hormonal harmony, mood stability, and physical confidence through every stage of life — from perimenopause to beyond.</div>
+        <ul class="product-features">
+          <li>Supports hormonal equilibrium naturally</li>
+          <li>Promotes mood balance & emotional resilience</li>
+          <li>Boosts libido, energy & mental clarity</li>
+          <li>Phytoestrogen & adaptogen complex</li>
+        </ul>
+        <a href="https://wa.me/?text=Hi%2C%20I%27d%20like%20to%20order%20Lyftmax%20(Women's%20Confidence%20%26%20Hormone%20Balance)%20from%20Dynace%20Global." class="btn-wa" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.93 0-3.73-.52-5.27-1.426l-.378-.223-3.903.93.974-3.8-.246-.39A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+
+      <!-- 4. TRIPLE ROOT COFFEE -->
+      <div class="product-card">
+        <div class="product-icon">☕</div>
+        <div class="product-badge">Men's Performance</div>
+        <div class="product-name">Triple Root Coffee</div>
+        <div class="product-tagline">Men's Vitality & Stamina</div>
+        <div class="product-desc">A premium functional coffee blend infused with three powerful botanical roots — Tongkat Ali, Maca & Ginseng — to fuel masculine vitality, stamina, and drive all day long.</div>
+        <ul class="product-features">
+          <li>Supports testosterone & libido naturally</li>
+          <li>Enhances physical stamina & endurance</li>
+          <li>Sharper focus & reduced fatigue</li>
+          <li>Smooth, rich premium coffee taste</li>
+        </ul>
+        <a href="https://wa.me/?text=Hi%2C%20I%27d%20like%20to%20order%20Triple%20Root%20Coffee%20(Men's%20Vitality%20%26%20Stamina)%20from%20Dynace%20Global." class="btn-wa" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.93 0-3.73-.52-5.27-1.426l-.378-.223-3.903.93.974-3.8-.246-.39A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+
+      <!-- 5. URBANISM -->
+      <div class="product-card">
+        <div class="product-icon">⚡</div>
+        <div class="product-badge">Weight Management</div>
+        <div class="product-name">Urbanism</div>
+        <div class="product-tagline">24-Hour Weight Management</div>
+        <div class="product-desc">A dual-phase body composition formula that works around the clock — accelerating fat metabolism during the day and optimizing cellular detox & recovery overnight.</div>
+        <ul class="product-features">
+          <li>Day formula: thermogenic fat-burn support</li>
+          <li>Night formula: metabolic reset & detox</li>
+          <li>Reduces bloating & water retention</li>
+          <li>Sustained energy without stimulant crash</li>
+        </ul>
+        <a href="https://wa.me/?text=Hi%2C%20I%27d%20like%20to%20order%20Urbanism%20(24-Hour%20Weight%20Management)%20from%20Dynace%20Global." class="btn-wa" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.93 0-3.73-.52-5.27-1.426l-.378-.223-3.903.93.974-3.8-.246-.39A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+
+      <!-- 6. OPTICENZ -->
+      <div class="product-card">
+        <div class="product-icon">👁️</div>
+        <div class="product-badge">Vision Health</div>
+        <div class="product-name">Opticenz</div>
+        <div class="product-tagline">Vision Shield</div>
+        <div class="product-desc">A targeted ocular health formula delivering lutein, zeaxanthin, and bilberry extract to protect eye cells from blue light damage and support sharp, clear vision with age.</div>
+        <ul class="product-features">
+          <li>Shields against blue light & UV damage</li>
+          <li>Supports macular health & sharpness</li>
+          <li>Reduces eye strain & dryness</li>
+          <li>Especially critical for adults 50+</li>
+        </ul>
+        <a href="https://wa.me/?text=Hi%2C%20I%27d%20like%20to%20order%20Opticenz%20(Vision%20Shield)%20from%20Dynace%20Global." class="btn-wa" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.93 0-3.73-.52-5.27-1.426l-.378-.223-3.903.93.974-3.8-.246-.39A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+
+      <!-- 7. ACE GUARD -->
+      <div class="product-card">
+        <div class="product-icon">🛡️</div>
+        <div class="product-badge">Immunity</div>
+        <div class="product-name">Ace Guard</div>
+        <div class="product-tagline">Immunity Warrior</div>
+        <div class="product-desc">A comprehensive immune-defense complex combining zinc, elderberry, Vitamin C, D3, and medicinal mushroom extracts to fortify your body's natural defence system year-round.</div>
+        <ul class="product-features">
+          <li>Activates & strengthens immune response</li>
+          <li>Antiviral & antimicrobial botanical stack</li>
+          <li>Reduces severity & duration of illness</li>
+          <li>Anti-inflammatory & respiratory support</li>
+        </ul>
+        <a href="https://wa.me/?text=Hi%2C%20I%27d%20like%20to%20order%20Ace%20Guard%20(Immunity%20Warrior)%20from%20Dynace%20Global." class="btn-wa" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.93 0-3.73-.52-5.27-1.426l-.378-.223-3.903.93.974-3.8-.246-.39A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+
+      <!-- 8. COLLAGÈNE -->
+      <div class="product-card">
+        <div class="product-icon">✨</div>
+        <div class="product-badge">Beauty & Sleep</div>
+        <div class="product-name">Collagène</div>
+        <div class="product-tagline">Beauty & Deep Sleep</div>
+        <div class="product-desc">A luxurious night-time beauty formula combining marine collagen peptides with melatonin and magnesium — rebuilding skin from within while you achieve your deepest, most restorative sleep.</div>
+        <ul class="product-features">
+          <li>Marine collagen Type I & III for skin & joints</li>
+          <li>Promotes deep REM sleep naturally</li>
+          <li>Reduces fine lines & improves skin glow</li>
+          <li>Nail & hair strength support</li>
+        </ul>
+        <a href="https://wa.me/?text=Hi%2C%20I%27d%20like%20to%20order%20Collag%C3%A8ne%20(Beauty%20%26%20Deep%20Sleep)%20from%20Dynace%20Global." class="btn-wa" target="_blank">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.93 0-3.73-.52-5.27-1.426l-.378-.223-3.903.93.974-3.8-.246-.39A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+    <p style="text-align:center; font-size:0.7rem; color:rgba(214,201,168,0.35); margin-top:32px;">
+      *These statements have not been evaluated by any food or drug authority. These products are not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before use.
+    </p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="background:var(--navy-mid);">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="gold-divider"><span>✦</span></div>
+      <h2 class="section-title">How to <em style="font-style:italic;color:var(--gold-light);">Order</em></h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:28px; text-align:center;">
+      <div>
+        <div style="font-size:2rem; color:var(--gold); font-family:'Cormorant Garamond',serif; font-weight:600; margin-bottom:8px;">01</div>
+        <div style="font-size:1rem; color:var(--cream); font-family:'Cormorant Garamond',serif; margin-bottom:6px;">Choose Your Product</div>
+        <div style="font-size:0.8rem; color:var(--cream-dim);">Browse the collection above and select the formula(s) that match your goals.</div>
+      </div>
+      <div>
+        <div style="font-size:2rem; color:var(--gold); font-family:'Cormorant Garamond',serif; font-weight:600; margin-bottom:8px;">02</div>
+        <div style="font-size:1rem; color:var(--cream); font-family:'Cormorant Garamond',serif; margin-bottom:6px;">Message on WhatsApp</div>
+        <div style="font-size:0.8rem; color:var(--cream-dim);">Tap "Order on WhatsApp" to connect directly with your regional Dynace partner.</div>
+      </div>
+      <div>
+        <div style="font-size:2rem; color:var(--gold); font-family:'Cormorant Garamond',serif; font-weight:600; margin-bottom:8px;">03</div>
+        <div style="font-size:1rem; color:var(--cream); font-family:'Cormorant Garamond',serif; margin-bottom:6px;">Confirm & Pay</div>
+        <div style="font-size:0.8rem; color:var(--cream-dim);">Your consultant will confirm your order, shipping address, and preferred payment method.</div>
+      </div>
+      <div>
+        <div style="font-size:2rem; color:var(--gold); font-family:'Cormorant Garamond',serif; font-weight:600; margin-bottom:8px;">04</div>
+        <div style="font-size:1rem; color:var(--cream); font-family:'Cormorant Garamond',serif; margin-bottom:6px;">Delivered to You</div>
+        <div style="font-size:0.8rem; color:var(--cream-dim);">Discreet international shipping to 50+ countries. Track your order in real time.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUITMENT -->
+<section id="join" style="background:var(--navy);">
+  <div class="container">
+    <div class="recruit-section">
+      <div style="position:relative;z-index:1;">
+        <div class="hero-badge" style="margin-bottom:18px;">💼 Business Opportunity</div>
+        <h2 class="section-title" style="margin-bottom:14px;">Do You Want to <em style="font-style:italic;color:var(--gold-light);">Work With Us?</em></h2>
+        <p class="section-sub" style="margin-bottom:8px;">Join the Dynace Global Network. Start your business today and earn in <strong style="color:var(--gold);">USD</strong> from anywhere in the world — no office, no experience required.</p>
+        <p class="section-sub" style="font-size:0.82rem; color:rgba(214,201,168,0.6);">Trusted by thousands of independent partners across Africa, Asia, the Middle East, and Europe.</p>
+
+        <div class="recruit-grid" style="margin:36px 0;">
+          <div class="recruit-item">
+            <div class="ri-icon">💵</div>
+            <div class="ri-title">Earn in USD</div>
+            <div class="ri-desc">Get paid in US dollars regardless of your local currency.</div>
+          </div>
+          <div class="recruit-item">
+            <div class="ri-icon">🌍</div>
+            <div class="ri-title">Work Globally</div>
+            <div class="ri-desc">Build a customer base anywhere in the world from your phone.</div>
+          </div>
+          <div class="recruit-item">
+            <div class="ri-icon">📱</div>
+            <div class="ri-title">WhatsApp Business</div>
+            <div class="ri-desc">All tools, training & marketing materials provided free.</div>
+          </div>
+          <div class="recruit-item">
+            <div class="ri-icon">🚀</div>
+            <div class="ri-title">Fast Start Bonus</div>
+            <div class="ri-desc">Qualify for your first commission in as little as 7 days.</div>
+          </div>
+          <div class="recruit-item">
+            <div class="ri-icon">🤝</div>
+            <div class="ri-title">Team Support</div>
+            <div class="ri-desc">Mentorship from a global upline of successful partners.</div>
+          </div>
+          <div class="recruit-item">
+            <div class="ri-icon">📈</div>
+            <div class="ri-title">Residual Income</div>
+            <div class="ri-desc">Build a network that pays you even while you sleep.</div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/?text=Hi%2C%20I'm%20interested%20in%20joining%20the%20Dynace%20Global%20Network%20as%20a%20business%20partner.%20Please%20send%20me%20more%20information." class="btn-primary" target="_blank" style="font-size:0.9rem; padding:16px 44px; clip-path:none; border-radius:2px; display:inline-flex; align-items:center; gap:10px;">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.93 0-3.73-.52-5.27-1.426l-.378-.223-3.903.93.974-3.8-.246-.39A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+          Start Your Business Today
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD CAPTURE -->
+<section id="order" style="background:var(--navy-mid);">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="gold-divider"><span>✦</span></div>
+      <h2 class="section-title">Get Your <em style="font-style:italic; color:var(--gold-light);">Free Consultation</em></h2>
+      <p class="section-sub" style="margin-top:12px;">Leave your details and a Dynace wellness advisor will reach out to help you find the right product combination for your personal health goals.</p>
+    </div>
+
+    <div class="form-wrap">
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--gold-light); text-align:center; margin-bottom:28px;">Request a Personal Health Consultation</h3>
+      <div class="form-field">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full name"/>
+      </div>
+      <div class="form-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com"/>
+      </div>
+      <div class="form-field">
+        <label>WhatsApp Number (with country code)</label>
+        <input type="tel" placeholder="+1 555 000 0000"/>
+      </div>
+      <div class="form-field">
+        <label>I'm interested in</label>
+        <select>
+          <option value="">Select your primary interest...</option>
+          <option>Products — Personal Health</option>
+          <option>Products — For Family Member</option>
+          <option>Business Partnership / Network</option>
+          <option>Both Products & Business</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Country</label>
+        <input type="text" placeholder="Your country"/>
+      </div>
+      <button onclick="handleSubmit()" class="btn-primary" style="width:100%; text-align:center; display:block; clip-path:none; border-radius:2px; padding:16px; font-size:0.85rem; cursor:pointer; border:none;">
+        Send My Details — I Want to Know More
+      </button>
+      <p style="text-align:center; font-size:0.7rem; color:rgba(214,201,168,0.35); margin-top:14px;">Your information is private and will never be shared with third parties.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--gold); margin-bottom:8px;">DYNACE GLOBAL SOLUTIONS</div>
+  <div style="margin-bottom:12px;">Independent Network Marketing · Worldwide</div>
+  <div style="max-width:600px; margin:0 auto;">
+    Dynace Global Solutions is an independent network marketing company. Products are dietary supplements and are not intended to diagnose, treat, cure, or prevent any disease.
+    Results may vary. Earnings from network marketing depend on individual effort and are not guaranteed.
+    Always consult a qualified healthcare professional before starting any supplement programme.
+  </div>
+  <div style="margin-top:16px; color:rgba(214,201,168,0.25);">© 2025 Dynace Global Solutions. All rights reserved.</div>
+</footer>
+
+<script>
+function handleSubmit() {
+  const inputs = document.querySelectorAll('.form-field input, .form-field select');
+  let name = '', email = '';
+  inputs.forEach(i => {
+    if(i.type === 'text' && !i.type === 'tel') name = i.value;
+    if(i.type === 'email') email = i.value;
+    if(i.placeholder && i.placeholder.includes('full name')) name = i.value;
+  });
+  alert('Thank you! A Dynace consultant will contact you on WhatsApp shortly. Welcome to the global wellness movement!');
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.querySelector(a.getAttribute('href'));
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
+</body>
+</html>
